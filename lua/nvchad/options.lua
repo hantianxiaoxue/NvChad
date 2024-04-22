@@ -9,7 +9,7 @@ g.toggle_theme_icon = "   "
 o.laststatus = 3
 o.showmode = false
 
-o.clipboard = "unnamedplus"
+-- o.clipboard = "unnamedplus"
 o.cursorline = true
 o.cursorlineopt = "number"
 
@@ -38,6 +38,7 @@ o.splitbelow = true
 o.splitright = true
 o.timeoutlen = 400
 o.undofile = true
+o.undodir='c:/users/zh/.vim/undo/nvim'
 
 -- interval for writing swap file to disk, also used by gitsigns
 o.updatetime = 250
