@@ -11,7 +11,7 @@ o.showmode = false
 
 -- o.clipboard = "unnamedplus"
 o.cursorline = true
-o.cursorlineopt = "number"
+o.cursorlineopt = "both"
 
 -- Indenting
 o.expandtab = true
@@ -39,7 +39,7 @@ o.splitright = true
 o.timeoutlen = 400
 
 o.undofile = true
-o.undodir= vim.fn.stdpath "data" .. "/undo"
+o.undodir = vim.fn.stdpath "data" .. "/undo"
 
 -- interval for writing swap file to disk, also used by gitsigns
 o.updatetime = 250
@@ -57,5 +57,5 @@ g["loaded_perl_provider"] = 0
 g["loaded_ruby_provider"] = 0
 
 -- add binaries installed by mason.nvim to path
-local is_windows = vim.fn.has("win32") ~= 0
+local is_windows = vim.fn.has "win32" ~= 0
 vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH

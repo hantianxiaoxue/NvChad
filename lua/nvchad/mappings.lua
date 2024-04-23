@@ -76,7 +76,7 @@ map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Nvimtree Focus window"
 
 -- telescope
 map("n", "<A-p>", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find files" })
-map("n", "<leader>t", "<cmd>Telescope terms<CR>", { desc = "Telescope Pick hidden term" })
+-- map("n", "<leader>t", "<cmd>Telescope terms<CR>", { desc = "Telescope Pick hidden term" })
 
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "Telescope Live grep" })
 -- map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Telescope Find buffers" })
@@ -99,13 +99,14 @@ map("t", "<C-x>", "<C-\\><C-N>", { desc = "Terminal Escape terminal mode" })
 
 -- new float terminals
 map({"n","t"}, "<F2>", function()
-  require("nvchad.term").new{ pos = "float", id = "floatTerm" }
+  require("nvchad.term").toggle{ pos = "float", id = "floatTerm" }
 end, { desc = "Terminal Floating term" })
 
-map({"t"}, "<F3>", function()
-  local win = vim.api.nvim_get_current_win()
-  vim.api.nvim_win_close(win, true)
-end, { desc = "Terminal Close term in terminal mode" })
+
+-- map({"i","n"}, "<F3>", function()
+--   local win = vim.api.nvim_get_current_win()
+--   vim.api.nvim_win_close(win, true)
+-- end, { desc = "Terminal Close term in terminal mode" })
 
 -- map("n", "<leader>h", function()
 --   require("nvchad.term").new { pos = "sp" }
