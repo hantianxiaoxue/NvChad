@@ -27,11 +27,11 @@ map({"n","i","v"}, "<C-s>", "<cmd>w<CR>", { desc = "File Save" })
 map({"v","i"}, "<C-c>", '"+y', { desc = "Copy" })
 map({"n","i","v"}, "<C-v>", '"+p', { desc = "Paste" })
 map({"i","v"}, "<C-x>", '"+d', { desc = "Cute" })
+map({"n","i","v"}, "<C-a>", '<Esc>ggVG', { desc = "Select all" })
 
 --------------
 map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "Toggle Line number" })
 map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "Toggle Relative number" })
-map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "Toggle NvCheatsheet" })
 
 map("n", "<A-F>", function()
   require("conform").format { lsp_fallback = true }
@@ -44,7 +44,7 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "Lsp next diagnostic" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Lsp diagnostic loclist" })
 
 -- tabufline
--- map("n", "<leader>b", "<cmd>enew<CR>", { desc = "Buffer New" })
+map("n", "<leader>b", "<cmd>enew<CR>", { desc = "Buffer New" })
 
 map("n", "<tab>", function()
   require("nvchad.tabufline").next()
@@ -78,11 +78,11 @@ map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Nvimtree Focus window"
 map("n", "<A-p>", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find files" })
 map("n", "<leader>t", "<cmd>Telescope terms<CR>", { desc = "Telescope Pick hidden term" })
 
--- map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "Telescope Live grep" })
+map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "Telescope Live grep" })
 -- map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Telescope Find buffers" })
 -- map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Telescope Help page" })
 -- map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "Telescope Find marks" })
--- map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope Find oldfiles" })
+map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope Find oldfiles" })
 -- map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope Find in current buffer" })
 -- map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "Telescope Git commits" })
 -- map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Telescope Git status" })
@@ -124,27 +124,3 @@ end, { desc = "Terminal Close term in terminal mode" })
 --   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
 -- end, { desc = "Terminal New horizontal term" })
 
-
-
--- whichkey
--- map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "Whichkey all keymaps" })
-
--- map("n", "<leader>wk", function()
---   vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
--- end, { desc = "Whichkey query lookup" })
-
--- blankline
-map("n", "<leader>cc", function()
-  local config = { scope = {} }
-  config.scope.exclude = { language = {}, node_type = {} }
-  config.scope.include = { node_type = {} }
-  local node = require("ibl.scope").get(vim.api.nvim_get_current_buf(), config)
-
-  if node then
-    local start_row, _, end_row, _ = node:range()
-    if start_row ~= end_row then
-      vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start_row + 1, 0 })
-      vim.api.nvim_feedkeys("_", "n", true)
-    end
-  end
-end, { desc = "Blankline Jump to current context" })

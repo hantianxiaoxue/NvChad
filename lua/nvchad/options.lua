@@ -37,8 +37,9 @@ o.signcolumn = "yes"
 o.splitbelow = true
 o.splitright = true
 o.timeoutlen = 400
+
 o.undofile = true
-o.undodir='c:/users/zh/.vim/undo/nvim'
+o.undodir= vim.fn.stdpath "data" .. "/undo"
 
 -- interval for writing swap file to disk, also used by gitsigns
 o.updatetime = 250
