@@ -20,14 +20,14 @@ map("n", "<A-h>", "<C-w>h", { desc = "Switch Window left" })
 map("n", "<A-l>", "<C-w>l", { desc = "Switch Window right" })
 map("n", "<A-j>", "<C-w>j", { desc = "Switch Window down" })
 map("n", "<A-k>", "<C-w>k", { desc = "Switch Window up" })
-map({"n","i","v"}, "<A-w>", "<C-w>w", { desc = "Switch Window" })
-map({"n","i","v"}, "<A-Enter>", "<cmd>bn<cr>", { desc = "To next buffer" })
+map({ "n", "i", "v" }, "<A-w>", "<C-w>w", { desc = "Switch Window" })
+map({ "n", "i", "v" }, "<A-Enter>", "<cmd>bn<cr>", { desc = "To next buffer" })
 
-map({"n","i","v"}, "<C-s>", "<cmd>w<CR>", { desc = "File Save" })
-map({"v","i"}, "<C-c>", '"+y', { desc = "Copy" })
-map({"n","i","v"}, "<C-v>", '"+p', { desc = "Paste" })
-map({"i","v"}, "<C-x>", '"+d', { desc = "Cute" })
-map({"n","i","v"}, "<C-a>", '<Esc>ggVG', { desc = "Select all" })
+map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { desc = "File Save" })
+map({ "v", "i" }, "<C-c>", '"+y', { desc = "Copy" })
+map({ "n", "i", "v" }, "<C-v>", '"+p', { desc = "Paste" })
+map({ "i", "v" }, "<C-x>", '"+d', { desc = "Cute" })
+map({ "n", "i", "v" }, "<C-a>", "<Esc>ggVG", { desc = "Select all" })
 
 --------------
 map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "Toggle Line number" })
@@ -59,13 +59,13 @@ map("n", "<leader>w", function()
 end, { desc = "Buffer Close" })
 
 -- Comment
-map("n", "<leader>/", function()
+map("n", "<A-/>", function()
   require("Comment.api").toggle.linewise.current()
 end, { desc = "Comment Toggle" })
 
 map(
   "v",
-  "<leader>/",
+  "<A-/>",
   "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
   { desc = "Comment Toggle" }
 )
@@ -98,10 +98,9 @@ map(
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "Terminal Escape terminal mode" })
 
 -- new float terminals
-map({"n","t"}, "<F2>", function()
-  require("nvchad.term").toggle{ pos = "float", id = "floatTerm" }
+map({ "n", "t" }, "<F2>", function()
+  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "Terminal Floating term" })
-
 
 -- map({"i","n"}, "<F3>", function()
 --   local win = vim.api.nvim_get_current_win()
@@ -124,4 +123,3 @@ end, { desc = "Terminal Floating term" })
 -- map({ "n", "t" }, "<A-h>", function()
 --   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
 -- end, { desc = "Terminal New horizontal term" })
-
