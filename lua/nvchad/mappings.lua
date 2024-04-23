@@ -123,3 +123,7 @@ end, { desc = "Terminal Floating term" })
 -- map({ "n", "t" }, "<A-h>", function()
 --   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
 -- end, { desc = "Terminal New horizontal term" })
+
+map("n", "<Space>", "")
+map("n", "<Space>c", "<cmd>cd %:p:h<CR>:pwd<CR>", { desc = "CWD to current" })
+
