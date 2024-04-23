@@ -26,6 +26,11 @@ return {
       return require "nvchad.configs.treesitter"
     end,
     config = function(_, opts)
+      opts.matchup = {
+        enable = true, -- mandatory, false will disable the whole extension
+        disable_virtual_text = false,
+        include_match_words = true,
+      }
       dofile(vim.g.base46_cache .. "syntax")
       dofile(vim.g.base46_cache .. "treesitter")
       require("nvim-treesitter.configs").setup(opts)
