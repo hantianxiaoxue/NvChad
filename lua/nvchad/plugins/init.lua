@@ -79,7 +79,7 @@ return {
       require("nvchad.configs.lspconfig").defaults()
     end,
   },
-  {
+  --[[ {
     "nvimdev/lspsaga.nvim",
     event = "LspAttach",
     config = function()
@@ -89,7 +89,7 @@ return {
       "nvim-treesitter/nvim-treesitter", -- optional
       "nvim-tree/nvim-web-devicons", -- optional
     },
-  },
+  }, ]]
   -- load luasnips + cmp related in insert mode only
   {
     "hrsh7th/nvim-cmp",
