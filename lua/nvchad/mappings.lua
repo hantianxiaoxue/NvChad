@@ -39,8 +39,10 @@ end, { desc = "Format Files" })
 
 -- global lsp mappings
 map("n", "<leader>lf", vim.diagnostic.open_float, { desc = "Lsp floating diagnostics" })
-map("n", "<leader>d", vim.diagnostic.goto_prev, { desc = "Lsp prev diagnostic" })
-map("n", "<leader>f", vim.diagnostic.goto_next, { desc = "Lsp next diagnostic" })
+-- map("n", "<leader>d", vim.diagnostic.goto_prev, { desc = "Lsp prev diagnostic" })
+-- map("n", "<leader>f", vim.diagnostic.goto_next, { desc = "Lsp next diagnostic" })
+map("n", "<leader>d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Lsp prev diagnostic" })
+map("n", "<leader>f", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Lsp next diagnostic" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Lsp diagnostic loclist" })
 
 -- tabufline
@@ -128,4 +130,3 @@ map("n", "<Space>", "")
 map("n", "<Space>c", "<cmd>cd %:p:h<CR>:pwd<CR>", { desc = "CWD to current" })
 map("n", "<A-=>", "<cmd>resize+2<CR>", { desc = "Increase window size" })
 map("n", "<A-->", "<cmd>resize-2<CR>", { desc = "Decrease window size" })
-
