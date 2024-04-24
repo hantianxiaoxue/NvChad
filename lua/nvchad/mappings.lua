@@ -126,4 +126,6 @@ end, { desc = "Terminal Floating term" })
 
 map("n", "<Space>", "")
 map("n", "<Space>c", "<cmd>cd %:p:h<CR>:pwd<CR>", { desc = "CWD to current" })
+map("n", "<A-=>", "<cmd>resize+2<CR>", { desc = "Increase window size" })
+map("n", "<A-->", "<cmd>resize-2<CR>", { desc = "Decrease window size" })
 
