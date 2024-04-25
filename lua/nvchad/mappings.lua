@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-hello
+
 map("n", "vv", "^v$", { desc = "Select current line" })
 map("n", "<A-i>", "<C-i>", { desc = "Focus to prev" })
 map("n", "<A-o>", "<C-o>", { desc = "Focus to next" })
