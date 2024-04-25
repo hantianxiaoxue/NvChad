@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-
+hello
 map("n", "vv", "^v$", { desc = "Select current line" })
 map("n", "<A-i>", "<C-i>", { desc = "Focus to prev" })
 map("n", "<A-o>", "<C-o>", { desc = "Focus to next" })
@@ -133,3 +133,4 @@ map("n", "<A-->", "<cmd>resize-2<CR>", { desc = "Decrease window size" })
 map("n", "<A-+>", "<cmd>vertical resize+2<CR>", { desc = "Increase vertical window size" })
 map("n", "<A-_>", "<cmd>vertical resize-2<CR>", { desc = "Decrease vertical window size" })
 map("n", "<C-p>", "<cmd>lua require('base46').toggle_transparency()<CR>", { desc = "Toggle transparency" })
+map("i", "<A-s>", "<cmd>w<CR>", { desc = "Save" })
