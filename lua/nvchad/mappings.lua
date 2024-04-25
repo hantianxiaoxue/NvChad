@@ -8,7 +8,7 @@ map("n", "<leader>p", 'viw"ap', { desc = "Paste current word" })
 map("v", "<", "<gv", { desc = "Indent left" })
 map("v", ">", ">gv", { desc = "Indent right" })
 
-map("n", "q", ":q<cr>", { desc = "Move Beginning of line" })
+map("n", "q", ":q!<cr>", { desc = "Move Beginning of line" })
 map("v", "H", "<Home>", { desc = "Move Left" })
 map("v", "L", "<End>", { desc = "Move Right" })
 map("n", "H", "<Home>", { desc = "Move Down" })
