@@ -55,7 +55,6 @@ M.ui = {
       { "  Find File", "<A-p>", "Telescope find_files" },
       { "󰈚  Recent Files", "<leader>fo", "Telescope oldfiles" },
       { "󰈭  Find Word", "<leader>fw", "Telescope live_grep" },
-      { "  Bookmarks", "<leader>ma", "Telescope marks" },
       { "  Themes", "<leader>th", "Telescope themes" },
     },
   },
