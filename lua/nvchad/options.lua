@@ -42,7 +42,7 @@ o.undofile = true
 o.undodir = vim.fn.stdpath "data" .. "/undo"
 
 -- interval for writing swap file to disk, also used by gitsigns
-o.noswapfile = true
+o.swapfile = true
 o.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
