@@ -93,6 +93,8 @@ return {
         vim.keymap.set("n", "<BS>", api.node.navigate.parent_close, ots "Close Directory")
         vim.keymap.set("n", "<CR>", api.node.open.edit, ots "Open")
         vim.keymap.set("n", "o", api.node.open.preview, ots "Open Preview")
+        vim.keymap.set("n", "vo", api.node.open.vertical, ots "Open: Vertical Split")
+        vim.keymap.set("n", "ho", api.node.open.horizontal, ots "Open: Horizontal Split")
         vim.keymap.set("n", ".", api.node.run.cmd, ots "Run Command")
         vim.keymap.set("n", "a", api.fs.create, ots "Create File Or Directory")
         vim.keymap.set("n", "bd", api.marks.bulk.delete, ots "Delete Bookmarked")
