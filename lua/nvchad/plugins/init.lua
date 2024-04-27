@@ -71,7 +71,9 @@ return {
       vim.g.mason_binaries_list = opts.ensure_installed
     end,
   },
-
+  {
+    "folke/neoconf.nvim",
+  },
   {
     "neovim/nvim-lspconfig",
     event = "User FilePost",
