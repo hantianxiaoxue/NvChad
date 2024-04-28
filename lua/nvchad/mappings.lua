@@ -25,9 +25,11 @@ map({ "n", "i", "v" }, "<A-w>", "<C-w>w", { desc = "Switch Window" })
 map({ "n", "i", "v" }, "<A-Enter>", "<cmd>bn<cr>", { desc = "To next buffer" })
 
 map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { desc = "File Save" })
-map({ "v", "i" }, "<C-c>", '"+y', { desc = "Copy" })
-map({ "n", "i", "v" }, "<C-v>", '"+p', { desc = "Paste" })
-map({ "i", "v" }, "<C-x>", '"+d', { desc = "Cute" })
+map("v", "<C-c>", '"+y', { desc = "Copy" })
+map({ "n", "v" }, "<C-v>", '"+p', { desc = "Paste" })
+map("i", "<C-v>", '<Esc>"+p', { desc = "Paste" })
+map("v", "<C-x>", '"+d', { desc = "Cute" })
+map("i", "<C-x>", 'Esc>"+d', { desc = "Cute" })
 map({ "n", "i", "v" }, "<C-a>", "<Esc>ggVG", { desc = "Select all" })
 
 --------------
