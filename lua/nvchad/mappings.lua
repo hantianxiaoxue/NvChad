@@ -134,7 +134,7 @@ end, { desc = "Terminal Floating term" })
 -- end, { desc = "Terminal Toggleable vertical term" })
 
 map({ "n", "t" }, ";t", function()
-  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+  require("nvchad.term").toggle { pos = "sp", id = "runner" }
 end, { desc = "Terminal New horizontal term" })
 
 map("n", "<Space>", "")
