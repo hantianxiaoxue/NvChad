@@ -66,17 +66,6 @@ M.capabilities.textDocument.completion.completionItem = {
 M.defaults = function()
   dofile(vim.g.base46_cache .. "lsp")
   require "nvchad.lsp"
-  require("neoconf").setup {
-    local_settings = ".neoconf.json",
-    -- name of the global settings file in your Neovim config directory
-    global_settings = "neoconf.json",
-    -- import existing settings from other plugins
-    import = {
-      vscode = true, -- local .vscode/settings.json
-      coc = true, -- global/local coc-settings.json
-      nlsp = true, -- global/local nlsp-settings.nvim json settings
-    },
-  }
   require("lspconfig").lua_ls.setup {
     on_attach = M.on_attach,
     capabilities = M.capabilities,

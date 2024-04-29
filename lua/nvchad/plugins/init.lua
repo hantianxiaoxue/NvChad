@@ -72,9 +72,6 @@ return {
     end,
   },
   {
-    "folke/neoconf.nvim",
-  },
-  {
     "neovim/nvim-lspconfig",
     event = "User FilePost",
     config = function()
