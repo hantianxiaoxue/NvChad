@@ -6,7 +6,7 @@ M.ui = {
   hl_add = {},
   hl_override = {
     Visual = {
-      bg = "#93c379",
+      bg = "#bdb76b",
       fg = "black",
     },
   },
