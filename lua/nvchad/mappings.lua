@@ -36,8 +36,9 @@ map("i", "<C-c>", '<Esc>"+y', { desc = "Copy" })
 map({ "n", "v" }, "<C-v>", '"+p', { desc = "Paste" })
 map("i", "<C-v>", '<Esc>"+p', { desc = "Paste" })
 map("v", "<C-x>", '"+d', { desc = "Cute" })
-map("i", "<C-x>", 'Esc>"+d', { desc = "Cute" })
+map("i", "<C-x>", '<Esc>"+d', { desc = "Cute" })
 map({ "n", "i", "v" }, "<C-a>", "<Esc>ggVG", { desc = "Select all" })
+map({ "n", "i", "v" }, "<C-z>", "<Esc>u", { desc = "Undo" })
 
 --------------
 map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "Toggle Line number" })
