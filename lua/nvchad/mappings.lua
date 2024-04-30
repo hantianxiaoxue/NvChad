@@ -68,7 +68,14 @@ map("n", "<S-tab>", function()
 end, { desc = "Buffer Goto prev" })
 
 map("n", "<leader>w", function()
-  require("nvchad.tabufline").close_buffer()
+  local h = vim.fn.winheight(0) + vim.o.cmdheight + 2 == vim.o.lines
+  local tw = vim.g["treewidth"] or 0
+  local w = vim.fn.winwidth(0) + tw == vim.o.columns
+  if not (h and w) then
+    vim.cmd "close"
+  else
+    require("nvchad.tabufline").close_buffer()
+  end
 end, { desc = "Buffer Close" })
 
 -- Comment
@@ -83,9 +90,18 @@ map(
   { desc = "Comment Toggle" }
 )
 
+local function treewidth()
+  return vim.fn.winwidth(0) ~= vim.o.columns and vim.fn.winwidth(0) + 1 or 0
+end
 -- nvimtree
-map("n", "<A-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Nvimtree Toggle window" })
-map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Nvimtree Focus window" })
+map("n", "<A-n>", function()
+  vim.cmd "NvimTreeToggle"
+  vim.g["treewidth"] = treewidth()
+end, { desc = "Nvimtree Toggle window" })
+map("n", "<leader>e", function()
+  vim.cmd "NvimTreeFocus"
+  vim.g["treewidth"] = treewidth()
+end, { desc = "Nvimtree Focus window" })
 
 -- telescope
 map("n", "<A-p>", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find files" })
