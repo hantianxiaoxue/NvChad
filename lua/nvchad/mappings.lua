@@ -156,11 +156,27 @@ end, { desc = "Terminal New horizontal term" })
 
 map("n", "<Space>", "")
 map("n", "q", "")
-map("n", "<Space>c", "<cmd>cd %:p:h<CR>:pwd<CR>", { desc = "CWD to current" })
-map({ "n", "t" }, "<A-=>", "<cmd>resize+2<CR>", { desc = "Increase window size" })
-map({ "n", "t" }, "<A-->", "<cmd>resize-2<CR>", { desc = "Decrease window size" })
-map({ "n", "t" }, "<A-+>", "<cmd>vertical resize+2<CR>", { desc = "Increase vertical window size" })
-map({ "n", "t" }, "<A-_>", "<cmd>vertical resize-2<CR>", { desc = "Decrease vertical window size" })
+map("n", "<Space>c", "<cmd>cd %:p:h<CR>:pwd<CR>", { desc = "CWD to current folder" })
+map("n", "<leader>g", "<cmd>G next_hunk<CR>", { desc = "Git next hunk" })
+
+local function resize(cmd)
+  vim.cmd(cmd)
+  if vim.fn.expand "%" == "NvimTree_1" then
+    vim.g["treewidth"] = treewidth()
+  end
+end
+map({ "n", "t" }, "<A-=>", function()
+  resize "resize+2"
+end, { desc = "Increase window size" })
+map({ "n", "t" }, "<A-->", function()
+  resize "resize-2"
+end, { desc = "Decrease window size" })
+map({ "n", "t" }, "<A-+>", function()
+  resize "vertical resize+2"
+end, { desc = "Increase vertical window size" })
+map({ "n", "t" }, "<A-_>", function()
+  resize "vertical resize-2"
+end, { desc = "Decrease vertical window size" })
 map({ "n", "t" }, "<C-p>", "<cmd>lua require('base46').toggle_transparency()<CR>", { desc = "Toggle transparency" })
 map({ "n", "i" }, "<A-s>", "<cmd>w<CR><Esc>", { desc = "Save" })
 map("n", "<leader>l", "")
