@@ -26,7 +26,7 @@ M.on_attach = function(client, bufnr)
     require "nvchad.lsp.renamer"()
   end, opts "NvRenamer")
 
-  map({ "n", "v", "i" }, "<A-.>", vim.lsp.buf.code_action, opts "Code action")
+  map({ "n", "v", "i" }, "<A-'>", vim.lsp.buf.code_action, opts "Code action")
   -- map({ "n", "v","i" }, "<A-.>", "<cmd>Lspsaga code_action<CR>", opts "Code action")
   map("n", "gr", vim.lsp.buf.references, opts "Show references")
 
