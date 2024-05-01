@@ -2,13 +2,16 @@ local M = {}
 
 M.ui = {
   ------------------------------- base46 -------------------------------------
-  -- hl = highlights
+  -- hl = highlights，need call：requre("base46").load_all_highlights()
   hl_add = {},
   hl_override = {
     Visual = {
       bg = "#bdb76b",
       fg = "black",
     },
+    --[[ CursorLine = {
+      bg = "#353B45",
+    }, ]]
   },
   changed_themes = {},
   theme_toggle = { "onedark", "one_light" },
