@@ -182,7 +182,7 @@ map({ "n", "i" }, "<A-s>", "<cmd>w<CR><Esc>", { desc = "Save" })
 map("n", "<leader>l", "")
 
 -- toggle lsp diagnostic msg
-map("n", "<A-M>", function()
+--[[ map("n", "<A-M>", function()
   -- local old = vim.g["lsphandler"]
   -- if not old then
   --   old = vim.lsp.handlers["textDocument/publishDiagnostics"]
@@ -202,7 +202,7 @@ map("n", "<A-M>", function()
       virtual_text = false,
     }
   end
-end, { desc = "Toggle diagnostic" })
+end, { desc = "Toggle diagnostic" }) ]]
 
 map("n", "gm", function()
   vim.diagnostic.open_float(nil, { focus = false })
