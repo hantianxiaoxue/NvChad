@@ -195,12 +195,9 @@ map("n", "<A-M>", function()
     vim.diagnostic.config {
       virtual_text = true,
     }
-
-    print "open diagnostic"
   else
     -- vim.diagnostic.disable()
     vim.g["lspmsg"] = 0
-    print "close diagnostic"
     vim.diagnostic.config {
       virtual_text = false,
     }
