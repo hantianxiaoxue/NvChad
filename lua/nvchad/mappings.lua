@@ -180,3 +180,33 @@ end, { desc = "Decrease vertical window size" })
 map({ "n", "t" }, "<C-p>", "<cmd>lua require('base46').toggle_transparency()<CR>", { desc = "Toggle transparency" })
 map({ "n", "i" }, "<A-s>", "<cmd>w<CR><Esc>", { desc = "Save" })
 map("n", "<leader>l", "")
+
+-- toggle lsp diagnostic msg
+map("n", "<A-M>", function()
+  -- local old = vim.g["lsphandler"]
+  -- if not old then
+  --   old = vim.lsp.handlers["textDocument/publishDiagnostics"]
+  --   vim.g["lsphandler"] = old
+  -- end
+  local status = vim.g["lspmsg"] or 0
+  if status == 0 then
+    -- vim.diagnostic.enable()
+    vim.g["lspmsg"] = 1
+    vim.diagnostic.config {
+      virtual_text = true,
+    }
+
+    print "open diagnostic"
+  else
+    -- vim.diagnostic.disable()
+    vim.g["lspmsg"] = 0
+    print "close diagnostic"
+    vim.diagnostic.config {
+      virtual_text = false,
+    }
+  end
+end, { desc = "Toggle diagnostic" })
+
+map("n", "gm", function()
+  vim.diagnostic.open_float(nil, { focus = false })
+end, { desc = "Float diagnostic msg" })
