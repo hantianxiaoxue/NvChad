@@ -22,7 +22,7 @@ map({ "n", "v" }, "<A-l>", "<C-w>l", { desc = "Switch Window right" })
 map({ "n", "v" }, "<A-j>", "<C-w>j", { desc = "Switch Window down" })
 map({ "n", "v" }, "<A-k>", "<C-w>k", { desc = "Switch Window up" })
 map({ "n", "v" }, "<A-w>", "<C-w>w", { desc = "Switch Window" })
-map({ "n", "v" }, "<A-Enter>", "<cmd>bn<cr>", { desc = "To next buffer" })
+map({ "n", "v" }, "<A-Enter>", "<cmd>bp<cr>", { desc = "To next buffer" })
 
 map("t", "<A-h>", "<C-\\><C-N><C-w>h", { desc = "Switch Window left" })
 map("t", "<A-l>", "<C-\\><C-N><C-w>l", { desc = "Switch Window right" })
