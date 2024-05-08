@@ -54,7 +54,8 @@ map("n", "<leader>d", vim.diagnostic.goto_prev, { desc = "Lsp prev diagnostic" }
 map("n", "<leader>f", vim.diagnostic.goto_next, { desc = "Lsp next diagnostic" })
 -- map("n", "<leader>d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Lsp prev diagnostic" })
 -- map("n", "<leader>f", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Lsp next diagnostic" })
-map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Lsp diagnostic loclist" })
+-- map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Lsp diagnostic loclist" })
+map("n", "<leader>q", "<cmd>TroubleToggle workspace_diagnostics<cr>", { desc = "Lsp diagnostic loclist" })
 
 -- tabufline
 map("n", "<leader>b", "<cmd>enew<CR>", { desc = "Buffer New" })
