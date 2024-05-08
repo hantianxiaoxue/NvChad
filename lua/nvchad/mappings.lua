@@ -151,9 +151,17 @@ end, { desc = "Terminal Floating term" })
 --   require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
 -- end, { desc = "Terminal Toggleable vertical term" })
 
-map({ "n", "t" }, ";t", function()
+map({ "n", "t" }, "<leader>t", function()
+  if vim.fn.expand "%" == "NvimTree_1" then
+    vim.api.nvim_feedkeys(vim.api.nvim_eval '"\\<C-w>w"', "x", true)
+  end
   require("nvchad.term").toggle { pos = "sp", id = "runner" }
 end, { desc = "Terminal New horizontal term" })
+
+map({ "t" }, "<F3>", function()
+  local keys = vim.api.nvim_replace_termcodes("exit<CR>", false, false, true)
+  vim.api.nvim_feedkeys(keys, "m", true)
+end, { desc = "Terminal close" })
 
 map("n", "<Space>", "")
 map("n", "q", "")
