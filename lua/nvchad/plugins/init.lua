@@ -155,7 +155,7 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "debugloop/telescope-undo.nvim" },
     cmd = "Telescope",
     opts = function()
       return require "nvchad.configs.telescope"
@@ -163,12 +163,32 @@ return {
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "telescope")
       local telescope = require "telescope"
-      telescope.setup(opts)
+      telescope.setup(opts, {
+        extensions = {
+          undo = {
+            side_by_side = true,
+            layout_strategy = "vertical",
+            layout_config = {
+              preview_height = 0.8,
+            },
+            mappings = {
+              i = {
+                ["<A-u>"] = require("telescope-undo.actions").restore,
+              },
+              n = {
+                ["u"] = require("telescope-undo.actions").restore,
+              },
+            },
+          },
+        },
+      })
 
       -- load extensions
+      telescope.load_extension "undo"
       for _, ext in ipairs(opts.extensions_list) do
         telescope.load_extension(ext)
       end
+      vim.keymap.set("n", "<A-u>", "<cmd>Telescope undo<cr>")
     end,
   },
 }
