@@ -69,10 +69,10 @@ map("n", "<S-tab>", function()
 end, { desc = "Buffer Goto prev" })
 
 map("n", "<leader>w", function()
-  local h = vim.fn.winheight(0) + vim.o.cmdheight + 2 == vim.o.lines
+  local full_h = vim.fn.winheight(0) + vim.o.cmdheight + 2 == vim.o.lines
   local tw = vim.g["treewidth"] or 0
-  local w = vim.fn.winwidth(0) + tw == vim.o.columns
-  if not (h and w) then
+  local full_w = vim.fn.winwidth(0) + tw == vim.o.columns
+  if not (full_h and full_w) then
     vim.cmd "close"
   else
     require("nvchad.tabufline").close_buffer()
@@ -92,7 +92,11 @@ map(
 )
 
 local function treewidth()
-  return vim.fn.winwidth(0) ~= vim.o.columns and vim.fn.winwidth(0) + 1 or 0
+  local w = vim.fn.winwidth(0)
+  if vim.fn.expand "%" ~= "NvimTree_1" then
+    w = vim.fn.winwidth(1)
+  end
+  return vim.fn.winwidth(0) ~= vim.o.columns and w + 1 or 0
 end
 -- nvimtree
 map("n", "<A-n>", function()
@@ -170,9 +174,7 @@ map("n", "<leader>g", "<cmd>G next_hunk<CR>", { desc = "Git next hunk" })
 
 local function resize(cmd)
   vim.cmd(cmd)
-  if vim.fn.expand "%" == "NvimTree_1" then
-    vim.g["treewidth"] = treewidth()
-  end
+  vim.g["treewidth"] = treewidth()
 end
 map({ "n", "t" }, "<A-=>", function()
   resize "resize+2"
