@@ -188,7 +188,6 @@ return {
       for _, ext in ipairs(opts.extensions_list) do
         telescope.load_extension(ext)
       end
-      vim.keymap.set("n", "<A-u>", "<cmd>Telescope undo<cr>")
     end,
   },
 }

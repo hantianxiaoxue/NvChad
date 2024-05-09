@@ -218,3 +218,4 @@ end, { desc = "Toggle diagnostic" }) ]]
 map("n", "gm", function()
   vim.diagnostic.open_float(nil, { focus = false })
 end, { desc = "Float diagnostic msg" })
+map("n", "<A-u>", "<cmd>Telescope undo<CR>")
