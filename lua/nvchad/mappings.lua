@@ -69,9 +69,10 @@ map("n", "<S-tab>", function()
   require("nvchad.tabufline").prev()
 end, { desc = "Buffer Goto prev" })
 
+-- close split window first,then tab,then nvim-tree
 map("n", "<leader>w", function()
   local full_h = vim.fn.winheight(0) + vim.o.cmdheight + 2 == vim.o.lines
-  local tw = vim.g["treewidth"] or 0
+  local tw = treewidth()
   local full_w = vim.fn.winwidth(0) + tw == vim.o.columns
   if not (full_h and full_w) then
     vim.cmd "close"
@@ -92,22 +93,33 @@ map(
   { desc = "Comment Toggle" }
 )
 
-local function treewidth()
-  local w = vim.fn.winwidth(0)
+function treewidth()
+  -- if only one window return 0
+  if vim.fn.winwidth(0) == vim.o.columns then
+    return 0
+  end
+  local tabpages = vim.api.nvim_list_tabpages()
+  for _, tabpage in ipairs(tabpages) do
+    local winlist = vim.api.nvim_tabpage_list_wins(tabpage)
+    -- for each window, check its bufer
+    for _, win in ipairs(winlist) do
+      local buf = vim.api.nvim_win_get_buf(win)
+      if vim.bo[buf].ft == "NvimTree" then
+        return vim.api.nvim_win_get_width(win) + 1
+      end
+    end
+  end
+  return 0
+
+  --[[ local w = vim.fn.winwidth(0)
   if vim.fn.expand "%" ~= "NvimTree_1" then
     w = vim.fn.winwidth(1)
   end
-  return vim.fn.winwidth(0) ~= vim.o.columns and w + 1 or 0
+  return vim.fn.winwidth(0) ~= vim.o.columns and w + 1 or 0 ]]
 end
 -- nvimtree
-map("n", "<A-n>", function()
-  vim.cmd "NvimTreeToggle"
-  vim.g["treewidth"] = treewidth()
-end, { desc = "Nvimtree Toggle window" })
-map("n", "<leader>e", function()
-  vim.cmd "NvimTreeFocus"
-  vim.g["treewidth"] = treewidth()
-end, { desc = "Nvimtree Focus window" })
+map("n", "<A-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Nvimtree Toggle window" })
+map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Nvimtree Focus window" })
 
 -- telescope
 map("n", "<A-p>", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find files" })
@@ -173,22 +185,10 @@ map("n", "q", "")
 map("n", "<Space>c", "<cmd>cd %:p:h<CR>:pwd<CR>", { desc = "CWD to current folder" })
 map("n", "<leader>g", "<cmd>G next_hunk<CR>", { desc = "Git next hunk" })
 
-local function resize(cmd)
-  vim.cmd(cmd)
-  vim.g["treewidth"] = treewidth()
-end
-map({ "n", "t" }, "<A-=>", function()
-  resize "resize+2"
-end, { desc = "Increase window size" })
-map({ "n", "t" }, "<A-->", function()
-  resize "resize-2"
-end, { desc = "Decrease window size" })
-map({ "n", "t" }, "<A-+>", function()
-  resize "vertical resize+2"
-end, { desc = "Increase vertical window size" })
-map({ "n", "t" }, "<A-_>", function()
-  resize "vertical resize-2"
-end, { desc = "Decrease vertical window size" })
+map({ "n", "t" }, "<A-=>", "<cmd>resize+2<CR>", { desc = "Increase window size" })
+map({ "n", "t" }, "<A-->", "<cmd>resize-2<CR>", { desc = "Decrease window size" })
+map({ "n", "t" }, "<A-+>", "<cmd>vertical resize+2<CR>", { desc = "Increase vertical window size" })
+map({ "n", "t" }, "<A-_>", "<cmd>vertical resize-2<CR>", { desc = "Decrease vertical window size" })
 map({ "n", "t" }, "<C-p>", "<cmd>lua require('base46').toggle_transparency()<CR>", { desc = "Toggle transparency" })
 map({ "n", "i" }, "<A-s>", "<cmd>w<CR><Esc>", { desc = "Save" })
 map("n", "<leader>l", "")
