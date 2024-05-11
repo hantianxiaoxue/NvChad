@@ -72,7 +72,7 @@ end, { desc = "Buffer Goto prev" })
 -- close split window first,then tab,then nvim-tree
 map("n", "<leader>w", function()
   local full_h = vim.fn.winheight(0) + vim.o.cmdheight + 2 == vim.o.lines
-  local tw = treewidth()
+  local tw = Treewidth()
   local full_w = vim.fn.winwidth(0) + tw == vim.o.columns
   if not (full_h and full_w) then
     vim.cmd "close"
@@ -93,7 +93,7 @@ map(
   { desc = "Comment Toggle" }
 )
 
-function treewidth()
+function Treewidth()
   -- if only one window return 0
   if vim.fn.winwidth(0) == vim.o.columns then
     return 0
