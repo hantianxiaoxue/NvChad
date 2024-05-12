@@ -87,7 +87,8 @@ return {
         vim.keymap.set("n", "<A-[>", change_parent, ots "Up")
         vim.keymap.set("n", "<A-]>", change_current, ots "Root to current node")
         vim.keymap.set("n", "X", api.tree.collapse_all, ots "Collapse")
-        vim.keymap.set("n", "?", api.tree.toggle_help, ots "Help")
+        vim.keymap.set("n", "g?", api.tree.toggle_help, ots "Help")
+        vim.keymap.set("n", "gh", api.tree.toggle_help, ots "Help")
 
         vim.keymap.set("n", "<C-k>", api.node.show_info_popup, ots "Info")
         vim.keymap.set("n", "<BS>", api.node.navigate.parent_close, ots "Close Directory")
