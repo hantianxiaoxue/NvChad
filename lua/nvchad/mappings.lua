@@ -1,8 +1,8 @@
 local map = vim.keymap.set
 
 map("n", "vv", "^v$", { desc = "Select current line" })
-map("n", "<A-i>", "<C-i>", { desc = "Focus to prev" })
-map("n", "<A-o>", "<C-o>", { desc = "Focus to next" })
+map("n", "<A-i>", "<C-o>", { desc = "Focus to prev" })
+map("n", "<A-o>", "<C-i>", { desc = "Focus to next" })
 map("n", "<leader>y", '"ayiw', { desc = "Copy current word" })
 map("n", "<leader>p", 'viw"ap', { desc = "Paste current word" })
 map("v", "<", "<gv", { desc = "Indent left" })
