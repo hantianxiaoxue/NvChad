@@ -16,7 +16,7 @@ map("n", "H", "<Home>", { desc = "Move Down" })
 map("n", "L", "<End>", { desc = "Move Up" })
 
 -- map("n", "<Space>w", "<cmd>noh<CR>", { desc = "General Clear highlights" })
-map("n", "<Space>w", "<cmd>Telescope live_grep<CR>", { desc = "Telescope live grep" })
+map({ "n", "v" }, "<Space>w", "<cmd>Telescope grep_string<CR>", { desc = "Telescope live grep" })
 
 map({ "n", "v" }, "<A-h>", "<C-w>h", { desc = "Switch Window left" })
 map({ "n", "v" }, "<A-l>", "<C-w>l", { desc = "Switch Window right" })
