@@ -1,7 +1,20 @@
 local opt = vim.opt
 local o = vim.o
 local g = vim.g
-
+-- utf8
+g.encoding = "UTF-8"
+o.fileencoding = "utf-8"
+-- jk移动时光标下上方保留8行
+o.scrolloff = 10
+o.sidescrolloff = 20
+-- 边输入边搜索
+o.incsearch = true
+o.autoread = true
+vim.bo.autoread = true
+-- 禁止折行
+o.wrap = false
+vim.wo.wrap = false
+o.hidden = true
 -------------------------------------- globals -----------------------------------------
 g.toggle_theme_icon = "   "
 
