@@ -12,8 +12,8 @@ o.incsearch = true
 o.autoread = true
 vim.bo.autoread = true
 -- 禁止折行
-o.wrap = false
-vim.wo.wrap = false
+-- o.wrap = false
+-- vim.wo.wrap = false
 o.hidden = true
 -------------------------------------- globals -----------------------------------------
 g.toggle_theme_icon = "   "
