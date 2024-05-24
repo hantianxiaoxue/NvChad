@@ -29,7 +29,9 @@ M.on_attach = function(client, bufnr)
   map({ "n", "v", "i" }, "<A-'>", vim.lsp.buf.code_action, opts "Code action")
   -- map({ "n", "v","i" }, "<A-.>", "<cmd>Lspsaga code_action<CR>", opts "Code action")
   -- map("n", "gr", vim.lsp.buf.references, opts "Show references")
-  map("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", opts "Show references")
+  map("n", "gr", function()
+    require("trouble").open "lsp_references"
+  end, opts "Show references")
 
   -- setup signature popup
   if conf.signature and client.server_capabilities.signatureHelpProvider then
