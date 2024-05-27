@@ -24,12 +24,12 @@ if (vim.env.TERM_PROGRAM or "") ~= "WezTerm" then
   map({ "n", "v" }, "<A-l>", "<C-w>l", { desc = "Switch Window right" })
   map({ "n", "v" }, "<A-j>", "<C-w>j", { desc = "Switch Window down" })
   map({ "n", "v" }, "<A-k>", "<C-w>k", { desc = "Switch Window up" })
-  -- resize
-  map({ "n", "t" }, "<A-=>", "<cmd>resize+2<CR>", { desc = "Increase window size" })
-  map({ "n", "t" }, "<A-->", "<cmd>resize-2<CR>", { desc = "Decrease window size" })
-  map({ "n", "t" }, "<A-+>", "<cmd>vertical resize+2<CR>", { desc = "Increase vertical window size" })
-  map({ "n", "t" }, "<A-_>", "<cmd>vertical resize-2<CR>", { desc = "Decrease vertical window size" })
 end
+-- resize
+map({ "n", "t" }, "<A-=>", "<cmd>resize+2<CR>", { desc = "Increase window size" })
+map({ "n", "t" }, "<A-->", "<cmd>resize-2<CR>", { desc = "Decrease window size" })
+map({ "n", "t" }, "<A-+>", "<cmd>vertical resize+2<CR>", { desc = "Increase vertical window size" })
+map({ "n", "t" }, "<A-_>", "<cmd>vertical resize-2<CR>", { desc = "Decrease vertical window size" })
 
 map({ "n", "v" }, "<A-w>", "<C-w>w", { desc = "Switch Window" })
 map({ "n", "v" }, "<A-Enter>", "<cmd>bp<cr>", { desc = "To next buffer" })
