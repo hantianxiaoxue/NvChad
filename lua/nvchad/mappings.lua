@@ -18,10 +18,19 @@ map("n", "L", "<End>", { desc = "Move Up" })
 -- map("n", "<Space>w", "<cmd>noh<CR>", { desc = "General Clear highlights" })
 map({ "n", "v" }, "<Space>w", "<cmd>Telescope grep_string<CR>", { desc = "Telescope live grep" })
 
-map({ "n", "v" }, "<A-h>", "<C-w>h", { desc = "Switch Window left" })
-map({ "n", "v" }, "<A-l>", "<C-w>l", { desc = "Switch Window right" })
-map({ "n", "v" }, "<A-j>", "<C-w>j", { desc = "Switch Window down" })
-map({ "n", "v" }, "<A-k>", "<C-w>k", { desc = "Switch Window up" })
+if (vim.env.TERM_PROGRAM or "") ~= "WezTerm" then
+  -- move
+  map({ "n", "v" }, "<A-h>", "<C-w>h", { desc = "Switch Window left" })
+  map({ "n", "v" }, "<A-l>", "<C-w>l", { desc = "Switch Window right" })
+  map({ "n", "v" }, "<A-j>", "<C-w>j", { desc = "Switch Window down" })
+  map({ "n", "v" }, "<A-k>", "<C-w>k", { desc = "Switch Window up" })
+  -- resize
+  map({ "n", "t" }, "<A-=>", "<cmd>resize+2<CR>", { desc = "Increase window size" })
+  map({ "n", "t" }, "<A-->", "<cmd>resize-2<CR>", { desc = "Decrease window size" })
+  map({ "n", "t" }, "<A-+>", "<cmd>vertical resize+2<CR>", { desc = "Increase vertical window size" })
+  map({ "n", "t" }, "<A-_>", "<cmd>vertical resize-2<CR>", { desc = "Decrease vertical window size" })
+end
+
 map({ "n", "v" }, "<A-w>", "<C-w>w", { desc = "Switch Window" })
 map({ "n", "v" }, "<A-Enter>", "<cmd>bp<cr>", { desc = "To next buffer" })
 
@@ -185,10 +194,6 @@ map("n", "q", "")
 map("n", "<Space>c", "<cmd>cd %:p:h<CR>:pwd<CR>", { desc = "CWD to current folder" })
 map("n", "<leader>g", "<cmd>G next_hunk<CR>", { desc = "Git next hunk" })
 
-map({ "n", "t" }, "<A-=>", "<cmd>resize+2<CR>", { desc = "Increase window size" })
-map({ "n", "t" }, "<A-->", "<cmd>resize-2<CR>", { desc = "Decrease window size" })
-map({ "n", "t" }, "<A-+>", "<cmd>vertical resize+2<CR>", { desc = "Increase vertical window size" })
-map({ "n", "t" }, "<A-_>", "<cmd>vertical resize-2<CR>", { desc = "Decrease vertical window size" })
 map({ "n", "t" }, "<C-p>", "<cmd>lua require('base46').toggle_transparency()<CR>", { desc = "Toggle transparency" })
 map({ "n", "i" }, "<A-s>", "<cmd>w<CR><Esc>", { desc = "Save" })
 map("n", "<leader>l", "")
