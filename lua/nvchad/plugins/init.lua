@@ -97,7 +97,7 @@ return {
       {
         -- snippet plugin
         "L3MON4D3/LuaSnip",
-        dependencies = "rafamadriz/friendly-snippets",
+        dependencies = { "rafamadriz/friendly-snippets", "hrsh7th/cmp-cmdline" },
         opts = { history = true, updateevents = "TextChanged,TextChangedI" },
         config = function(_, opts)
           require("luasnip").config.set_config(opts)

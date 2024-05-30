@@ -69,8 +69,14 @@ local options = {
   formatting = formatting_style,
 
   mapping = {
-    ["<A-k>"] = cmp.mapping.select_prev_item(),
-    ["<A-j>"] = cmp.mapping.select_next_item(),
+    ["<A-k>"] = {
+      i = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+      c = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+    },
+    ["<A-j>"] = {
+      i = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+      c = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+    },
     ["<A-[>"] = cmp.mapping.scroll_docs(-4),
     ["<A-]>"] = cmp.mapping.scroll_docs(4),
     --[[ ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -80,9 +86,12 @@ local options = {
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
 
-    ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
+    ["<CR>"] = {
+      i = cmp.mapping.confirm {
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true,
+      },
+      c = cmp.mapping.confirm {},
     },
 
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -111,6 +120,7 @@ local options = {
     { name = "buffer" },
     { name = "nvim_lua" },
     { name = "path" },
+    { name = "cmdline" },
   },
 }
 
@@ -118,4 +128,24 @@ if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
   options.window.completion.border = border "CmpBorder"
 end
 
+cmp.setup.cmdline("/", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = "buffer" },
+  },
+})
+
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = "path" },
+  }, {
+    {
+      name = "cmdline",
+      option = {
+        ignore_cmds = { "Man", "!" },
+      },
+    },
+  }),
+})
 return options
