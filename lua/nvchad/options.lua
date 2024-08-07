@@ -5,8 +5,8 @@ local g = vim.g
 g.encoding = "UTF-8"
 o.fileencoding = "utf-8"
 -- jk移动时光标下上方保留8行
-o.scrolloff = 10
-o.sidescrolloff = 20
+-- o.scrolloff = 10
+-- o.sidescrolloff = 20
 -- 边输入边搜索
 o.incsearch = true
 o.autoread = true
